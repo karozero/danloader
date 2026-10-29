@@ -15,15 +15,33 @@ A browser extension for finding and downloading videos on a page, with quality s
 
 Other sites: best-effort detection of HTML video and HLS/DASH streams.
 
-## Installation
+## Install
 
-1. Open `chrome://extensions` or `edge://extensions`.
-2. Enable Developer mode and click **Load unpacked**.
-3. Select the `video-downloader/dist` folder.
-4. Reload the video page and start playback.
+### Chrome Web Store
+
+The store link will be added after publication.
+
+### Manual
+
+1. Download the extension ZIP from [GitHub Releases](https://github.com/karozero/danloader/releases/latest) and extract it to a permanent folder.
+2. Open `chrome://extensions` or `edge://extensions`.
+3. Enable **Developer mode** and click **Load unpacked**.
+4. Select the extracted folder containing `manifest.json`.
+5. Reload the video page and start playback.
 
 Open Danloader, choose a quality, and click **Download**. Select a save folder at the top of the panel to use it for all videos.
 
 [Support details](docs/SUPPORT.md) · [Verification results](docs/VERIFICATION.md) (in Russian)
 
-Development: `npm ci`, then `npm run build`. Run `npm run typecheck` to check TypeScript.
+## Building
+
+Requires Node.js 22 or newer and npm. Download or clone the source code, then open a terminal in the project folder containing `package.json`:
+
+```sh
+npm ci
+npm run build
+```
+
+The built extension is in `dist`. Load this folder using **Load unpacked** as described above.
+
+Run `npm test` to build and run unit tests, or `npm run typecheck` to check TypeScript.
