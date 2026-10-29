@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Danloader",
+  "version": "1.4.6",
+  "description": "Обнаружение и скачивание видео. Локальная обработка HTTP, HLS и DASH без аккаунта и аналитики.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "downloads",
+    "storage",
+    "webRequest",
+    "webNavigation",
+    "offscreen",
+    "declarativeNetRequest",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "service.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Danloader",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "youtube-session.js",
+        "page.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src http: https:; worker-src 'self';"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "danloader",
+  "version": "1.4.6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run typecheck && node scripts/build.mjs",
+    "test": "npm run build && node --test --test-isolation=none tests/*.test.mjs",
+    "test:browser": "node scripts/browser-test.mjs",
+    "test:sites": "node scripts/sites-live-test.mjs",
+    "verify": "npm run test && npm run test:browser && npm run test:language",
+    "test:language": "node scripts/language-browser-test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "googlevideo": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.3.7",
+    "@types/wicg-file-system-access": "2023.10.7",
+    "esbuild": "0.28.2",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2"
+  }
+}
